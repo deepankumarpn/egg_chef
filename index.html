@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EggChef - Perfectly boil eggs every time. Select your boil type, follow easy instructions, and enjoy.">
+    <title>EggChef - Perfect Egg Timer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="ic_launcher-playstore.png">
+
+    <style>
+        :root{
+            --yolk:#ffc107;
+            --yolk-deep:#e65100;
+            --shell:#fff8e1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--shell);
+            color: #333;
+        }
+        header {
+            background: var(--yolk);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 20%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            background: white;
+            padding: 10px;
+        }
+        header h1 {
+            margin: 0.5rem 0 0;
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.2rem 0 0;
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        /* --- Creative Boil Types Grid --- */
+        h2.section-title{
+            text-align:center;
+            margin: 2rem 0 1rem;
+        }
+        .boil-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+        }
+        .boil-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            border: 3px solid transparent;
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .boil-card::after{
+            content:"";
+            position:absolute;
+            inset:-30% -40% auto auto;
+            width:120px;
+            height:120px;
+            background: radial-gradient(circle at 65% 40%, rgba(255,193,7,.25), transparent 60%);
+            transform: rotate(25deg);
+        }
+        .boil-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+            border-color: var(--yolk);
+        }
+        .egg-icon {
+            font-size: 2rem;
+            margin-bottom: .35rem;
+        }
+        .boil-card h3{
+            margin:.2rem 0 .1rem;
+            font-size:1.05rem;
+        }
+        .boil-card .time{
+            font-weight:700;
+            color: var(--yolk-deep);
+            margin:.15rem 0 .35rem;
+        }
+        .boil-card .desc{
+            font-size:.92rem;
+            color:#555;
+            line-height:1.3;
+        }
+        .chip {
+            display:inline-block;
+            font-size:.78rem;
+            background:#fff7d1;
+            border:1px solid #ffec8a;
+            padding:.2rem .55rem;
+            border-radius:999px;
+            margin-top:.25rem;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 1px solid #ffeeba;
+        }
+        .play-badge {
+            display: block;
+            margin: 2rem auto;
+            max-width: 250px;
+        }
+        footer {
+            background: var(--yolk);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="ic_launcher-playstore.png" alt="EggChef App Icon">
+    <h1>EggChef</h1>
+    <p>Perfectly boil eggs every time</p>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Choose Your Boil Type</h2>
+
+    <div class="boil-grid">
+        <div class="boil-card">
+            <div class="egg-icon">🥚</div>
+            <h3>Dippy soldiers</h3>
+            <div class="time">3 minutes • 180s</div>
+            <p class="desc">Soft-boiled with runny yolks—made for dipping toast sticks.</p>
+            <span class="chip">Super runny</span>
+        </div>
+
+        <div class="boil-card">
+            <div class="egg-icon">🍳</div>
+            <h3>Runny yolks</h3>
+            <div class="time">6 minutes • 360s</div>
+            <p class="desc">Barely set whites with luscious yolks—great for salad & toast.</p>
+            <span class="chip">Runny center</span>
+        </div>
+
+        <div class="boil-card">
+            <div class="egg-icon">🥚</div>
+            <h3>Soft boiled</h3>
+            <div class="time">8 minutes • 480s</div>
+            <p class="desc">Creamy yolks and just-set whites—perfect for bowls & sandwiches.</p>
+            <span class="chip">Creamy</span>
+        </div>
+
+        <div class="boil-card">
+            <div class="egg-icon">🍳</div>
+            <h3>Hard boiled</h3>
+            <div class="time">10 minutes • 600s</div>
+            <p class="desc">Firm yolks & whites—ideal for salads and meal prep.</p>
+            <span class="chip">Firm</span>
+        </div>
+
+        <div class="boil-card">
+            <div class="egg-icon">⚪</div>
+            <h3>Overcooked</h3>
+            <div class="time">12 minutes • 720s</div>
+            <p class="desc">Powdery yolks, rubbery whites—only if you really want it.</p>
+            <span class="chip">Very firm</span>
+        </div>
+    </div>
+
+    <h2 class="section-title">📋 Instructions</h2>
+    <div class="instructions">
+        <p><b>Water level 3cm/1"</b> – Fill the saucepan so eggs are covered by at least 3cm / 1".</p>
+        <p><b>Boil first then add eggs</b> – Bring water to a rapid boil. Lower fridge-cold eggs in gently.</p>
+        <p><b>Lower heat</b> – Keep water bubbling but not so much that eggs crack.</p>
+        <p><b>Start the timer</b> once all eggs are in:
+            <br>- Dippy soldiers: 3 minutes
+            <br>- Runny yolks: 6 minutes
+            <br>- Soft boiled: 8 minutes
+            <br>- Hard boiled: 10 minutes
+            <br>- Overcooked: 12 minutes
+        </p>
+        <p><b>Cool 10 minutes</b> – Place eggs in cold water for 10 mins.</p>
+        <p><b>Peel from base in water</b> – Crack base, peel under water.</p>
+        <p><b>Storing</b> – Keep hard boiled eggs in fridge up to 7 days.</p>
+    </div>
+
+    <!-- Official Google Play badge -->
+    <a href="https://play.google.com/store/apps/details?id=deepankumarpn.github.io.eggchef" target="_blank" rel="noopener">
+        <img class="play-badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+             alt="Get it on Google Play">
+    </a>
+</div>
+
+<footer>
+    <p>© 2025 EggChef | Designed for egg lovers worldwide 🥚 | 
+       <a href="https://deepankumarpn.github.io/egg_chef/privacy_policy.html" target="_blank">Privacy Policy</a>
+    </p>
+</footer>
+
+</body>
+</html>
